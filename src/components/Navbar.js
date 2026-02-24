@@ -56,12 +56,21 @@ const Navbar = () => {
                 </div>
 
                 <div className="hidden md:flex items-center gap-4">
-                    <button className="text-sm font-semibold hover:text-secondary transition-colors">
-                        Login
-                    </button>
-                    <button className="bg-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-opacity-90 transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
-                        Get Started <ChevronRight className="w-4 h-4" />
-                    </button>
+                    {process.env.NEXT_PUBLIC_DASHBOARD_URL ? (
+                        <>
+                            <Link href={process.env.NEXT_PUBLIC_DASHBOARD_URL} className="text-sm font-semibold hover:text-secondary transition-colors">Login</Link>
+                            <Link href={process.env.NEXT_PUBLIC_DASHBOARD_URL} className="bg-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-opacity-90 transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
+                                Get Started <ChevronRight className="w-4 h-4" />
+                            </Link>
+                        </>
+                    ) : (
+                        <>
+                            <button className="text-sm font-semibold hover:text-secondary transition-colors">Login</button>
+                            <button className="bg-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-opacity-90 transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
+                                Get Started <ChevronRight className="w-4 h-4" />
+                            </button>
+                        </>
+                    )}
                 </div>
 
                 {/* Mobile Toggle */}
@@ -93,10 +102,17 @@ const Navbar = () => {
                             </Link>
                         ))}
                         <div className="flex flex-col gap-3 pt-4 border-t border-border">
-                            <button className="w-full text-left py-2 font-bold text-primary">Login</button>
-                            <button className="w-full bg-accent text-white py-4 rounded-2xl font-bold shadow-lg shadow-accent/20">
-                                Get Started
-                            </button>
+                            {process.env.NEXT_PUBLIC_DASHBOARD_URL ? (
+                                <>
+                                    <Link href={process.env.NEXT_PUBLIC_DASHBOARD_URL} className="w-full text-left py-2 font-bold text-primary" onClick={() => setIsOpen(false)}>Login</Link>
+                                    <Link href={process.env.NEXT_PUBLIC_DASHBOARD_URL} className="w-full bg-accent text-white py-4 rounded-2xl font-bold shadow-lg shadow-accent/20 text-center" onClick={() => setIsOpen(false)}>Get Started</Link>
+                                </>
+                            ) : (
+                                <>
+                                    <button className="w-full text-left py-2 font-bold text-primary">Login</button>
+                                    <button className="w-full bg-accent text-white py-4 rounded-2xl font-bold shadow-lg shadow-accent/20">Get Started</button>
+                                </>
+                            )}
                         </div>
                     </motion.div>
                 )}

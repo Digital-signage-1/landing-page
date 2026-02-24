@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
+import PlayerSetup from "@/components/PlayerSetup";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <Features />
       <HowItWorks />
+      <PlayerSetup />
 
       {/* Final CTA Section */}
       <section className="py-24 px-6">

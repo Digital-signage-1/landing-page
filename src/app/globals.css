@@ -1,55 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import "tailwindcss";
 
-@theme inline {
-  --color-primary: #1e293b;
-  /* Soft Slate */
-  --color-primary-foreground: #ffffff;
+@theme {
+  --color-brand: #c07c10;
+  --color-brand-foreground: #ffffff;
+  --color-ink: #0f172a;
+  --color-paper: #fafbfc;
+  --color-line: rgba(15, 23, 42, 0.06);
 
-  --color-accent: #0ea5e9;
-  /* Sky Blue */
-  --color-accent-foreground: #ffffff;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", "Inter", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", monospace;
 
-  --color-secondary: #6366f1;
-  /* Indigo */
-  --color-secondary-foreground: #ffffff;
-
-  --color-muted: #f1f5f9;
-  --color-muted-foreground: #64748b;
-
-  --color-card: #ffffff;
-  --color-card-foreground: #1e293b;
-
-  --color-border: #e2e8f0;
-
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
-
-  --font-sans: "Inter", var(--font-geist-sans);
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 3.5rem;
 }
 
-:root {
-  --background: #fdfdfd;
-  --foreground: #1e293b;
-  --primary: #1e293b;
-  --primary-foreground: #ffffff;
-  --accent: #0ea5e9;
-  --accent-foreground: #ffffff;
-  --border: #e2e8f0;
+@layer base {
+  body {
+    @apply antialiased selection:bg-brand/20 selection:text-brand bg-paper text-ink;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
-/* Light mode only for marketing landing page */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  .glass {
+    @apply bg-white/60 backdrop-blur-xl border border-white/20;
+  }
 
-.glass-morphism {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  .glass-dark {
+    @apply bg-slate-900/60 backdrop-blur-xl border border-white/10;
+  }
+
+  .mask-fade-bottom {
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  }
+
+  .asymmetric-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .rotate-y-12 {
+    transform: rotateY(12deg);
+  }
+
+  .writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .blend-multiply {
+    mix-blend-mode: multiply;
+  }
+
+  .blend-overlay {
+    mix-blend-mode: overlay;
+  }
 }
